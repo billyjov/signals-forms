@@ -1,0 +1,21 @@
+<div class="py-12 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-3 gap-8">
+      @for (category of categories; track category.title) {
+        <div class="space-y-3">
+          <div class="border border-gray-300 rounded p-6">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">{{ category.title }}</h3>
+            <div class="space-y-2 flex flex-col">
+              <a [routerLink]="category.reactiveRoute" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                Reactive →
+              </a>
+              <a [routerLink]="category.signalsRoute" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                Signals →
+              </a>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

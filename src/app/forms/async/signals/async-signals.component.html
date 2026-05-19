@@ -1,0 +1,15 @@
+<div class="max-w-2xl mx-auto p-4 space-y-4">
+  <h2 class="text-lg font-medium">Username prüfen</h2>
+
+  <input [formField]="form.username" placeholder="Username eingeben" class="border p-2 w-full" />
+
+  @if (form.username().pending()) {
+    <div class="text-sm">Checking...</div>
+  }
+
+  @if (form.username().invalid() && form.username().touched()) {
+    <div class="text-red-600 text-sm">
+      {{ form.username().errors()[0].message }}
+    </div>
+  }
+</div>

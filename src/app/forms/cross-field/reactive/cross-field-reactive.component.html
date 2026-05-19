@@ -1,0 +1,8 @@
+<div class="max-w-2xl mx-auto p-4 space-y-4">
+  <input type="date" [formControl]="form.controls.checkIn" class="border p-2 w-full" />
+  <input type="date" [formControl]="form.controls.checkOut" class="border p-2 w-full" />
+
+  @if (form.errors?.['dateRange']) {
+    <div class="text-red-600">Check-out muss nach Check-in liegen</div>
+  }
+</div>

@@ -1,0 +1,11 @@
+<div class="max-w-2xl mx-auto p-4 space-y-4">
+  <input [formControl]="username" class="border p-2 w-full" placeholder="Username" />
+
+  @if (isChecking()) {
+    <div>Checking...</div>
+  }
+
+  @if (username.errors?.['taken']) {
+    <div class="text-red-600">Username vergeben</div>
+  }
+</div>

@@ -17,7 +17,7 @@ export class ArrayReactiveComponent {
     })
   ]);
 
-  addItem() {
+  addItem(): void {
     this.items.push(
       new FormGroup({
         name: new FormControl('', Validators.required),
@@ -26,7 +26,7 @@ export class ArrayReactiveComponent {
     );
   }
 
-  removeItem(index: number) {
+  removeItem(index: number): void {
     this.items.removeAt(index);
   }
 

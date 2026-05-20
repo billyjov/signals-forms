@@ -1,6 +1,14 @@
 import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { form, applyEach, required, min, FormField } from '@angular/forms/signals';
+import {
+  form,
+  applyEach,
+  required,
+  min,
+  FormField,
+  minLength,
+  maxLength,
+} from '@angular/forms/signals';
 
 interface Item {
   name: string;
@@ -20,20 +28,23 @@ export class ArraySignalsComponent {
   });
 
   form = form(this.formModel, (s) => {
+    minLength(s.items, 1, { message: 'Mindestens 1 Item nötig' });
+    maxLength(s.items, 5, { message: 'Maximal 5 Items erlaubt' });
+
     applyEach(s.items, (item) => {
       required(item?.name, { message: 'Name fehlt' });
       min(item?.quantity, 1, { message: 'Min 1' });
     });
   });
 
-  addItem() {
+  addItem(): void {
     this.formModel.update((model) => ({
       ...model,
       items: [...model.items, { name: '', quantity: 1 }],
     }));
   }
 
-  removeItem(index: number) {
+  removeItem(index: number): void {
     this.formModel.update((model) => ({
       ...model,
       items: model.items.filter((_, i) => i !== index),

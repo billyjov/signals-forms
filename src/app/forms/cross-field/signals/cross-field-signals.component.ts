@@ -29,7 +29,7 @@ export class CrossFieldSignalsComponent {
         if (checkIn && checkOut && checkOut <= checkIn) {
           return {
             kind: 'dateRange',
-            message: 'Check-out muss nach Check-in liegenb'
+            message: 'Check-out muss nach Check-in liegen'
           };
         }
 

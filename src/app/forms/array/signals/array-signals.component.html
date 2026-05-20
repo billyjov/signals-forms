@@ -1,41 +1,25 @@
 <div class="max-w-2xl mx-auto p-4 space-y-4">
+  <h2 class="text-lg font-medium">Items</h2>
 
-
-  <h2 class="text-lg font-medium">
-    Items
-  </h2>
-
-  <button
-    (click)="addItem()"
-    class="border px-2 py-1"
-  >
-    Add Item
-  </button>
+  <button (click)="addItem()" class="border px-2 py-1">Add Item</button>
 
   @let items = form.items;
+  @let itemErrors = form.items().errors();
+  @if (itemErrors) {
+    @for (error of itemErrors; track error.kind) {
+      <div class="text-red-600 text-sm">
+        {{ error.message }}
+      </div>
+    }
+  }
 
   @for (itemValue of items; track $index) {
-
     <div class="border p-2 space-y-2">
+      <input [formField]="form.items[$index].name" placeholder="Name" class="border p-1 w-full" />
 
-      <input
-        [formField]="form.items[$index].name"
-        placeholder="Name"
-        class="border p-1 w-full"
-      />
+      <input type="number" [formField]="form.items[$index].quantity" class="border p-1 w-full" />
 
-      <input
-        type="number"
-        [formField]="form.items[$index].quantity"
-        class="border p-1 w-full"
-      />
-
-      <!-- <button
-        (click)="removeItem($index)"
-        class="border px-2"
-      >
-        Remove
-      </button> -->
+      <button (click)="removeItem($index)" class="border px-2">Remove</button>
 
       @if (form.items[$index].name().invalid() && form.items[$index].name().touched()) {
         <div class="text-red-600 text-sm">
@@ -48,9 +32,6 @@
           {{ form.items[$index].quantity().errors()[0].message }}
         </div>
       }
-
     </div>
-
   }
-
 </div>

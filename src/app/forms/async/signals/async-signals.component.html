@@ -7,7 +7,7 @@
     <div class="text-sm">Checking...</div>
   }
 
-  @if (form.username().invalid() && form.username().touched()) {
+  @if (form.username().invalid()) {
     <div class="text-red-600 text-sm">
       {{ form.username().errors()[0].message }}
     </div>

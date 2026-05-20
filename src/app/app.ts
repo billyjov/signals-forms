@@ -17,6 +17,7 @@ export class App {
     { label: 'Async R', route: '/async/reactive' },
     { label: 'Async S', route: '/async/signals' },
     { label: 'Array R', route: '/array/reactive' },
-    { label: 'Array S', route: '/array/signals' }
+    { label: 'Array S', route: '/array/signals' },
+    { label: 'Register', route: '/register' }
   ];
 }
